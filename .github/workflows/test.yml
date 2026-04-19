@@ -1,6 +1,6 @@
 name: Scale Test
 
-on: [push]
+on: workflow_dispatch
 
 jobs:
   test:
@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        job: [1,2,3,4]
+        job: [1,2,3,4,5]
 
     steps:
       - run: echo "Job ${{ matrix.job }} running"
