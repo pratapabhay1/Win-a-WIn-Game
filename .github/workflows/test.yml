@@ -1,11 +1,15 @@
-name: Test Runner
+name: Scale Test
 
-on: workflow_dispatch
+on: [push]
 
 jobs:
   test:
     runs-on: [self-hosted, asg-runner]
 
+    strategy:
+      matrix:
+        job: [1,2,3,4]
+
     steps:
-      - name: Hello
-        run: echo "Runner working"
+      - run: echo "Job ${{ matrix.job }} running"
+      - run: sleep 60
