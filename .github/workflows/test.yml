@@ -1,19 +1,11 @@
-name: Parallel Runner Test
+name: Test Runner
 
-on:
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   test:
-    runs-on: self-hosted
-
-    strategy:
-      matrix:
-        job_id: [1, 2, 3, 4, 5]
+    runs-on: [self-hosted, asg-runner]
 
     steps:
-      - name: Print Job ID
-        run: echo "Running job ${{ matrix.job_id }}"
-
-      - name: Simulate Work
-        run: sleep 60
+      - name: Hello
+        run: echo "Runner working"
