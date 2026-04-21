@@ -1,13 +1,19 @@
-name: Scale Test
+name: Parallel Runner Test
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: [self-hosted, asg-runner]
-    timeout-minutes: 5    
+    runs-on: self-hosted
+
     strategy:
       matrix:
-        test: [1, 2, 3, 4, 5]
+        job_id: [1, 2, 3, 4, 5]
+
     steps:
-      - run: echo "Running test ${{ matrix.test }}"
+      - name: Print Job ID
+        run: echo "Running job ${{ matrix.job_id }}"
+
+      - name: Simulate Work
+        run: sleep 60
