@@ -1,11 +1,21 @@
-name: Test Runner
+name: test runner
 
-on: workflow_dispatch
+on:
+workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: [asg-runner]
+test:
+runs-on: self-hosted
 
-    steps:
-      - name: Hello
-        run: echo "Runner working"
+```
+strategy:
+  matrix:
+    job_id: [1, 2, 3, 4, 5]
+
+steps:
+  - name: Print Job Info
+    run: |
+      echo "Running job ${{ matrix.job_id }}"
+      hostname
+      sleep 120
+```
