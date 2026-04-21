@@ -5,11 +5,9 @@ on: workflow_dispatch
 jobs:
   test:
     runs-on: [self-hosted, asg-runner]
-
+    timeout-minutes: 5    
     strategy:
       matrix:
-        job: [1,2,3,4,5]
-
+        test: [1, 2, 3, 4, 5]
     steps:
-      - run: echo "Job ${{ matrix.job }} running"
-      - run: sleep 60
+      - run: echo "Running test ${{ matrix.test }}"
